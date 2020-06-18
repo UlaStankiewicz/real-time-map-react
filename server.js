@@ -11,7 +11,7 @@ const server = new http.Server(app);
 
 const io = socketIo(server);
 
-let cars = range(100).map((id) => {
+let cars = range(10).map((id) => {
     return {
         id,
         name: `Car ${id}`,
@@ -49,4 +49,3 @@ io.on("connect", (connection) => {
 server.listen(8080, () => {
     console.log("Server listening on port 8080")
 });
-
