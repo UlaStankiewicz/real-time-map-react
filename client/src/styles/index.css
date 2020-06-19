@@ -5,15 +5,22 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgba(212, 227, 238, 0.479)
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+ul {
+  list-style: none;
+}
+li{
+  margin:10px;
+}
 .leaflet-container {
   height: 100vh;
-  width: 70vw;
+  width: 60vw;
 }
 
 #mapid { height: 180px; }
@@ -22,10 +29,19 @@ code {
   width: 100vw;
   height: 100vh;
   display: flex;
+  margin: 30px
 }
 
-.carsList{
-background-color: red;
+.carsTable{
 font-size: 1em;
 width: 30vw;
+margin: 0.3em;;
+}
+
+.titleHeader{
+  font-size: 1.8em;
+  margin:10px;
+  display: flex;
+  justify-content: center;
+  letter-spacing: 0.1em;
 }
