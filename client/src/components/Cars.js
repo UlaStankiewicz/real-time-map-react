@@ -4,17 +4,16 @@ import { Marker, Popup } from "react-leaflet";
 export const Cars = ({ cars }) => {
   return (
     <>
-    <section className="carsMarkers">
-      {cars.map((car) => {
-        let positionCar = [car.lat, car.lng];
-        return (
-          <Marker position={positionCar} key={car.id}>
-            <Popup>{car.name}</Popup>
-          </Marker>
-        );
-      })}
-    </section>
-
+      <section>
+        {cars.map((car) => {
+          let positionCar = [car.lat, car.lng];
+          return (
+            <Marker position={positionCar} key={car.id}>
+              <Popup>{car.name}</Popup>
+            </Marker>
+          );
+        })}
+      </section>
     </>
   );
 };
