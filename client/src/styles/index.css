@@ -21,12 +21,13 @@ code {
   height: 100vh;
   width: auto;
   display: flex;
-  justify-content:space-around;
-  margin: 30px
+  margin: 30px;
+
 }
 
-.tableWrapper{
+.searchWrapper{
   display:block;
+margin: 0px 28px;
 }
 @media (max-width: 900px) {
   .container,.leaflet-container   {

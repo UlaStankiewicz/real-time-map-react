@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from "react";
 import styled from "styled-components";
 
@@ -6,10 +7,10 @@ export const Title = ({ title }) => {
     font-size: 1.8em;
     margin: 10px;
     display: flex;
-    justify-content: center;
     letter-spacing: 0.1em;
     color: #1d8fbd;
-      font-weight: bold;
+    font-weight: bold;
+    justify-content:center;
   `
   return (
     <>
@@ -18,3 +19,6 @@ export const Title = ({ title }) => {
   );
 };
 export default Title;
+Title.propTypes = {
+  title: PropTypes.string
+};

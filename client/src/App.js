@@ -1,14 +1,20 @@
-import React, { useState, useEffect, useCallback } from "react";
 import "./styles/index.css";
+
+import React, { useEffect, useState } from "react";
+
 import CarsList from "./components/CarsList";
+import MapLeaflet from "./components/MapLeaflet";
 import Title from "./components/Title";
 import socketIOClient from "socket.io-client";
-import MapLeaflet from "./components/MapLeaflet";
+import styled from "styled-components";
 
-// REMEMBER: useCallback / useMemo / errors / loading
-// TODO: replace hardcored api url with variable
-// todo: alphabetical imports, proptypes
-
+const StyledInput = styled.input`
+  padding: 5px;
+  border-radius: 7px;
+  margin: 3px;
+  border: none;
+  color: #1d8fbd;
+`;
 const initialState = {
   loading: false,
   errorMessage: null,
@@ -21,43 +27,45 @@ export const App = () => {
   const [zoom] = useState(10);
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
   let position = [initialState.lat, initialState.lng];
+  const ENDPOINT = "http://127.0.0.1:8080";
+  const socket = socketIOClient(ENDPOINT);
 
-  // const fetchCarsData = useCallback(async () => {
-  //   let response = await fetch("http://localhost:8080/cars");
-  //   response = await response.json();
-  //   setCars(response);
-  // }, []);
+  //TODO: replace hardcoded api url with variable
+  //TODO: handle errors
+  //TODO: write tests!
 
-  // useEffect(() => {
-  //   fetchCarsData();
-  // }, [fetchCarsData]);
-
-
-// socket.io firt version
-
-  const socketData = useCallback(() => {
-    const ENDPOINT = "http://127.0.0.1:8080";
-    const socket = socketIOClient(ENDPOINT);
-    socket.on("cars", (fetchedCars) => {
-      setCars(fetchedCars);
+  useEffect(() => {
+    socket.on("carPositionChanged", (updatedCar) => {
+      if (cars.length === 0) {
+        return;
+      }
+      const carIndexToUpdate = cars.findIndex(
+        (car) => updatedCar.id === car.id
+      );
+      cars[carIndexToUpdate] = updatedCar;
+      const newCars = [...cars];
+      setCars(newCars);
     });
+    return () => socket.off("carPositionChanged");
   }, [cars]);
 
   useEffect(() => {
-    socketData();
+    socket.on("cars", (fetchedCars) => {
+      setCars(fetchedCars);
+    });
+    return () => socket.disconnect();
   }, []);
 
-// socket.io second version
+  // search cars
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value.substr(0, 20));
+  };
 
-  // useEffect(() => {
-  //   const ENDPOINT = "http://127.0.0.1:8080";
-  //   const socket = socketIOClient(ENDPOINT);
-  //   socket.on("cars", (fetchedCars) => {
-  //     setCars(fetchedCars);
-  //   });
-  //   return () => socket.close();
-  // }, [cars]);
+  let filteredCars = cars.filter((car) => {
+    return car.name.toLowerCase().indexOf(searchTerm) !== -1;
+  });
 
   return (
     <>
@@ -70,9 +78,14 @@ export const App = () => {
         ) : (
           <MapLeaflet cars={cars} zoom={zoom} position={position} />
         )}
-        <div className="tableWrapper">
-          <Title title="Cars Coordinates" />
-          <CarsList cars={cars} />
+        <div className="searchWrapper">
+          <StyledInput
+            type="text"
+            placeholder="Search by name"
+            value={searchTerm}
+            onChange={handleChange}
+          />
+          <CarsList cars={cars} filteredCars={filteredCars} />
         </div>
       </div>
     </>

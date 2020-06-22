@@ -1,7 +1,8 @@
-import React from "react";
 import { Map, TileLayer, ZoomControl } from "react-leaflet";
-import L from "leaflet"
+
 import Cars from "./Cars";
+import PropTypes from 'prop-types';
+import React from "react";
 import ReactLeafletSearch  from "react-leaflet-search";
 
 export const MapLeaflet = ({ cars, zoom, position }) => {
@@ -17,7 +18,7 @@ export const MapLeaflet = ({ cars, zoom, position }) => {
         />
         <ZoomControl position="topright" />
         {
-          (console.log("App: ", cars),
+          (
           cars ? <Cars cars={cars} /> : <p>Loading...</p>)
         }
       </Map>
@@ -25,3 +26,16 @@ export const MapLeaflet = ({ cars, zoom, position }) => {
   );
 };
 export default MapLeaflet;
+
+MapLeaflet.propTypes = {
+  zoom: PropTypes.number,
+  position:PropTypes.array,
+cars: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      lat: PropTypes.number,
+      lng: PropTypes.number,
+    })
+  ).isRequired,
+};

@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import PropTypes from "prop-types";
+import React from "react";
 import styled from "styled-components";
-export const CarsList = ({ cars }) => {
+
+export const CarsList = ({ filteredCars }) => {
   const StyledTable = styled.table`
     color: #1d8fbd;
     font-weight: bold;
@@ -23,22 +25,6 @@ export const CarsList = ({ cars }) => {
     padding: 5px 15px;
   `;
 
-  const StyledInput = styled.input`
-    padding: 5px;
-    border-radius: 7px;
-    margin: 3px;
-    border: none;
-    color: #1d8fbd;
-  `;
-  const [searchTerm, setSearchTerm] = useState("");
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value.substr(0, 20));
-  };
-
-  let filteredCars = cars.filter((car) => {
-    return car.name.toLowerCase().indexOf(searchTerm) !== -1;
-  });
-
   const renderTableData = () => {
     return filteredCars.map((car) => {
       const { id, name, lat, lng } = car;
@@ -54,13 +40,6 @@ export const CarsList = ({ cars }) => {
 
   return (
     <>
-      <StyledInput
-        type="text"
-        placeholder="Search by name"
-        value={searchTerm}
-        onChange={handleChange}
-      />
-      <StyledInput type="submit" value="SEARCH" />
       <StyledTable>
         <StyledTbody>{renderTableData()}</StyledTbody>
       </StyledTable>
@@ -69,3 +48,14 @@ export const CarsList = ({ cars }) => {
 };
 
 export default CarsList;
+
+CarsList.propTypes = {
+  cars: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      lat: PropTypes.number,
+      lng: PropTypes.number,
+    })
+  ).isRequired,
+};
