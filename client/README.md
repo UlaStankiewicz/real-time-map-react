@@ -1,6 +1,6 @@
 ## High Performance React App
 
-![React Map Screenshot](/client/public/reactMap.png){:height="700px" width="400px"}
+![React Map Screenshot](reactMap.png?raw=true){:height="700px" width="400px"}
 
 
 The application is a simple web page that displays a map and several markers (cars) on the map and updates it in real time, built with React.js, Node.js, React-Leaflet, Socket.io, styled-components. This is simulation of tracking meachanism for several items that move. In addition, the application allows you to search for displayed objects.
@@ -18,11 +18,11 @@ The application is a simple web page that displays a map and several markers (ca
 * npm start / yarn start - runs the app in the development mode.
 
 
-#More available scripts: 
+# More available scripts: 
 
-*npm test / yarn test - Launches the test runner in the interactive watch mode,
-*npm run build / yarn build - builds the app for production to the build folder,
-*npm run eject / yarn eject - ff you aren’t satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.
+* npm test / yarn test - Launches the test runner in the interactive watch mode,
+* npm run build / yarn build - builds the app for production to the build folder,
+* npm run eject / yarn eject - ff you aren’t satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.
 
 
 
