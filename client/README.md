@@ -1,6 +1,6 @@
 ## High Performance React App
 
-![React Map Screenshot](/client/public/reactMap.png?raw=true)
+![React Map Screenshot](client/public/reactMap.png?raw=true)
 
 
 The application is a simple web page that displays a map and several markers (cars) on the map and updates it in real time, built with 
