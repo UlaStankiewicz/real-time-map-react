@@ -8,7 +8,7 @@ The application is a simple web page that displays a map and several markers (ca
 * Socket.io, 
 * styled-components. 
 
-[![JavaScript Style Guide: Good Parts](https://img.shields.io/badge/code%20style-goodparts-brightgreen.svg?style=flat)](https://github.com/dwyl/goodparts "JavaScript The Good Parts")
+
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 ### This is simulation of tracking meachanism for several items that move. In addition, the application allows you to search for displayed objects. App'll be developed.
