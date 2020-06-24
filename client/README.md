@@ -1,9 +1,10 @@
 ## High Performance React App
 
-![React Map Screenshot](reactMap.png?raw=true){:height="700px" width="400px"}
+![React Map Screenshot](/client/public/reactMap.png?raw=true)
 
 
-The application is a simple web page that displays a map and several markers (cars) on the map and updates it in real time, built with React.js, Node.js, React-Leaflet, Socket.io, styled-components. This is simulation of tracking meachanism for several items that move. In addition, the application allows you to search for displayed objects.
+The application is a simple web page that displays a map and several markers (cars) on the map and updates it in real time, built with 
+* React.js, * Node.js, * React-Leaflet, *Socket.io, *styled-components. This is simulation of tracking meachanism for several items that move. In addition, the application allows you to search for displayed objects.
 
 [![Node version](https://img.shields.io/node/v/[NPM-MODULE-NAME].svg?style=flat)](http://nodejs.org/download/)
 [![JavaScript Style Guide: Good Parts](https://img.shields.io/badge/code%20style-goodparts-brightgreen.svg?style=flat)](https://github.com/dwyl/goodparts "JavaScript The Good Parts")
